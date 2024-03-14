@@ -11,6 +11,7 @@ values('$cusName','$cusAddress','$cusTel','". $_SESSION["sum_price"]."','1')";
 mysqli_query($conn,$sql);
 
 $orderID = mysqli_insert_id($conn);
+$_SESSION["order_id"] = $orderID;
 
 for ($i=0; $i <= (int)$_SESSION["intLine"]; $i++){
     if(($_SESSION["strProductID"][$i]) !="") {
@@ -30,7 +31,7 @@ for ($i=0; $i <= (int)$_SESSION["intLine"]; $i++){
        where pro_id='". $_SESSION["strProductID"][$i]."'";
        mysqli_query($conn,$sql3);
        //echo "<script> alert('บันทึกข้อมูลเรียบร้อยแล้ว') </script>" ;
-       echo "<script> window.location='show_product.php' </script>";
+       echo "<script> window.location='print_order.php' </script>";
        }
 }
 }
@@ -39,5 +40,5 @@ unset($_SESSION["intLine"]);
 unset($_SESSION["strProductId"]);
 unset($_SESSION["strQty"]);
 unset($_SESSION["sum_price"]);
-session_destroy();
+//session_destroy();
 ?>

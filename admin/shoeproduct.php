@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RosniypmShop</title>
+    <title>Myshop</title>
     <!-- Bootstrap CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet" >
     <!-- Option 1: Bootstrap Bundle with Popper -->
@@ -13,7 +13,6 @@
 
 </head>
 <body>
-  <?php include 'menu.php'?>
 <div class="container">
 <div class="row">
   <?php
@@ -22,17 +21,11 @@ $result = mysqli_query($conn,$sql);
 while($row = mysqli_fetch_array($result)){  
   ?>
      <div class="col-sm-3">
-      <div class="text-center">
-     <img src="img/<?=$row['image']?>" width="200px" height="250px" class="mt-5 p-2 my-2 border"> <br>
+     <img src="img/<?=$row['image']?>" width="80px" height="100px" > <br>
      ID: <?=$row['pro_id']?> <br>
-     <h5 class="text-success"><?=$row['pro_name']?> </h5>
-     ราคา <b class="text-danger"><?=$row['price']?></b> บาท <br>
-     <a  class="btn btn-outline-success mt-2" href="order.php?id=<?=$row['pro_id']?>">Add cart</a>
-     </div>
-     
-     
+     <?=$row['pro_name']?> <br>
+     ราคา <?=$row['price']?> บาท <br>
     </div> 
-
   <?php
 }
 mysqli_close($conn);
